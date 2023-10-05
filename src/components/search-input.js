@@ -20,22 +20,22 @@ export default function SearchInput({ searchMovies }) {
   };
 
   return (
-    // <Row style={{ justify: "space-between" }}>
-    //   <Col span={19}>
-    <form onSubmit={(e) => e.preventDefault()} id="1">
-      <label id="1">
-        <DebounceInput
-          minLength={2}
-          debounceTimeout={500}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          style={inputStyle}
-          placeholder="Type to search..."
-          className="input-tab"
-        />
-      </label>
-    </form>
-    //   </Col>
-    // </Row>
+    <Row style={{ justify: "space-between" }}>
+      <Col style={{ margin: "0 auto", width: "100%" }}>
+        <form onSubmit={(e) => e.preventDefault()} id="1">
+          <label id="1">
+            <DebounceInput
+              minLength={2}
+              debounceTimeout={500}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              style={inputStyle}
+              placeholder="Type to search..."
+              className="input-tab"
+            />
+          </label>
+        </form>
+      </Col>
+    </Row>
   );
 }

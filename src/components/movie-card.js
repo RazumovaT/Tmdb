@@ -11,11 +11,8 @@ const { Title, Paragraph, Text } = Typography;
 const MovieCard = ({
   movieArr,
   substractScript,
-  // movieData,
   substractTitle,
-  setRated,
-  // addToRated,
-  //   genres,
+  addToRated,
 }) => {
   const gridStyle = {
     width: "450px",
@@ -24,17 +21,7 @@ const MovieCard = ({
     margin: "10px",
     span: "12",
   };
-  const {
-    updateMovie,
-    results,
-    genres,
-    movieData,
-    rateMovie,
-    loading,
-    setLoading,
-    addToRated,
-    getRatedMovie,
-  } = useContext(DataContext);
+  const { genres } = useContext(DataContext);
 
   return (
     <>
@@ -45,6 +32,7 @@ const MovieCard = ({
               className="movie-container"
               span={11}
               key={movie.id}
+            
             >
               {movie.poster_path ? (
                 <img
@@ -96,7 +84,6 @@ const MovieCard = ({
                     position: "absolute",
                     bottom: "15px",
                   }}
-                  // onClick={() => getRatedMovie()}
                   onChange={(value) => addToRated(movie, value)}
                 />
               </ul>
