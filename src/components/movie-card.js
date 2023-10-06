@@ -34,12 +34,16 @@ const MovieCard = ({
               key={movie.id}
             
             >
-              {movie.poster_path ? (
-                <img
-                  className="movie-poster"
-                  src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
-                  alt={movie.title}
-                />
+             {movie.poster_path ? (
+                loading ? (
+                  <Spin size="large"></Spin>
+                ) : (
+                  <img
+                    className="movie-poster"
+                    src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+                    alt={movie.title}
+                  />
+                )
               ) : (
                 <img src="https://www.lyricsmotion.com/Content/images/gopal-krishna-1979-200x275.jpg" />
               )}
