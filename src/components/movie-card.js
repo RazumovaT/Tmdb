@@ -1,22 +1,13 @@
 import React from "react";
-import { useState, useContext } from "react";
-import { Typography, Spin, Col, Row, Rate } from "antd";
+import { useContext } from "react";
+import { Typography, Spin, Col, Rate } from "antd";
 import { format } from "date-fns";
 
-import SizeContext from "antd/es/config-provider/SizeContext";
 import { DataContext } from "./api-service";
 
-const { Title, Paragraph, Text } = Typography;
+const { Paragraph, Text } = Typography;
 
-const MovieCard = ({
-  movieArr,
-  substractScript,
-  // movieData,
-  substractTitle,
-  setRated,
-  // addToRated,
-  //   genres,
-}) => {
+const MovieCard = ({ movieArr, substractScript, substractTitle }) => {
   const gridStyle = {
     width: "450px",
     textAlign: "start",
@@ -24,17 +15,7 @@ const MovieCard = ({
     margin: "10px",
     span: "12",
   };
-  const {
-    updateMovie,
-    results,
-    genres,
-    movieData,
-    rateMovie,
-    loading,
-    setLoading,
-    addToRated,
-    getRatedMovie,
-  } = useContext(DataContext);
+  const { genres, rateMovie, loading } = useContext(DataContext);
 
   return (
     <>
@@ -47,11 +28,15 @@ const MovieCard = ({
               key={movie.id}
             >
               {movie.poster_path ? (
-                <img
-                  className="movie-poster"
-                  src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
-                  alt={movie.title}
-                />
+                loading ? (
+                  <Spin size="large"></Spin>
+                ) : (
+                  <img
+                    className="movie-poster"
+                    src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+                    alt={movie.title}
+                  />
+                )
               ) : (
                 <img src="https://www.lyricsmotion.com/Content/images/gopal-krishna-1979-200x275.jpg" />
               )}
@@ -96,8 +81,7 @@ const MovieCard = ({
                     position: "absolute",
                     bottom: "15px",
                   }}
-                  // onClick={() => getRatedMovie()}
-                  onChange={(value) => addToRated(movie, value)}
+                  onChange={(value) => rateMovie(movie, value)}
                 />
               </ul>
             </Col>
@@ -108,9 +92,3 @@ const MovieCard = ({
 };
 
 export default MovieCard;
-
-//   <MovieCard
-//     movieArr={movieData}
-//     substractScript={substractScript}
-//     substractTitle={substractTitle}
-//   />;

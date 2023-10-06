@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "./api-service";
 import { Alert } from "antd";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
-import { useState } from "react";
 
-export default function AlertMessage({ BASIC_URL }) {
+export default function AlertMessage() {
+  const { BASIC_URL } = useContext(DataContext);
   const alertStyle = {
     display: "block",
     width: "700px",
