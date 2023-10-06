@@ -10,17 +10,14 @@ import TabSearch from "./components/tab-search";
 import TabRated from "./components/tab-rated";
 import { DataContext } from "./components/api-service";
 import { ApiService } from "./components/api-service";
+
 const root = document.getElementById("root");
 const root1 = createRoot(root);
 
 const BASIC_URL = "https://api.themoviedb.org/3/";
 
 export function App() {
-  const {
-    showAlert,
-
-    getRatedMovie,
-  } = useContext(DataContext);
+  const { showAlert, getRatedMovie } = useContext(DataContext);
 
   const substractScript = (text) => {
     if (text.length > 170) {
@@ -44,7 +41,7 @@ export function App() {
     return text;
   };
 
-  const items = [
+  const tabItems = [
     {
       label: "Search",
       key: "1",
@@ -62,7 +59,6 @@ export function App() {
         <TabRated
           substractScript={substractScript}
           substractTitle={substractTitle}
-          onClick={() => getRatedMovie()}
         />
       ),
     },
@@ -75,10 +71,11 @@ export function App() {
           <AlertMessage BASIC_URL={BASIC_URL} />
         ) : (
           <>
+            {" "}
             <ApiService>
               <Tabs
                 centered
-                items={items}
+                items={tabItems}
                 style={{
                   margin: "auto",
                 }}

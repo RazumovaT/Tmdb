@@ -7,7 +7,6 @@ const BASIC_URL = "https://api.themoviedb.org/3/";
 const API_KEY = "api_key=af95f78c831f3180d61fc95fdebb33a0";
 const API_SEARCH =
   "https://api.themoviedb.org/3/search/movie?api_key=af95f78c831f3180d61fc95fdebb33a0&query=";
-const guestUrl = `${BASIC_URL}authentication/guest_session/new?${API_KEY}`;
 
 export const ApiService = (props) => {
   const [movieData, setMovieData] = useState([]);
@@ -18,7 +17,6 @@ export const ApiService = (props) => {
   const [pages, setPages] = useState(1);
   const [movieAlert, setMovieAlert] = useState(false);
   const [query, setQuery] = useState("");
-  const [pagesGenre, setPagesGenre] = useState(1);
   const [rated, setRated] = useState([]);
   const [guestSessionId, setGuestSessionId] = useState("");
   const [genre, setGenre] = useState("");

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-
 import { Typography, Col, Row } from "antd";
 import { DataContext } from "./api-service";
 const { Text } = Typography;
