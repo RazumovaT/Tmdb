@@ -17,7 +17,7 @@ const root1 = createRoot(root);
 const BASIC_URL = "https://api.themoviedb.org/3/";
 
 export function App() {
-  const { showAlert, getRatedMovie } = useContext(DataContext);
+  const { showAlert } = useContext(DataContext);
 
   const substractScript = (text) => {
     if (text.length > 170) {

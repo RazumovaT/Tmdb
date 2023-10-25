@@ -1,10 +1,10 @@
 import React from "react";
-import { Input, Row, Col } from "antd";
-import { useState, useContext } from "react";
+import { Row, Col } from "antd";
+import { useContext } from "react";
 import { DebounceInput } from "react-debounce-input";
 import { DataContext } from "./api-service";
 
-export default function SearchInput({ searchMovies }) {
+export default function SearchInput() {
   const { query, setQuery } = useContext(DataContext);
   const inputStyle = {
     display: "flex",

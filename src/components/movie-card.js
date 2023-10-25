@@ -26,6 +26,9 @@ const MovieCard = ({ movieArr, substractScript, substractTitle }) => {
               className="movie-container"
               span={11}
               key={movie.id}
+              lg={11}
+              md={10}
+              sm={8}
             >
               {movie.poster_path ? (
                 loading ? (
@@ -38,7 +41,7 @@ const MovieCard = ({ movieArr, substractScript, substractTitle }) => {
                   />
                 )
               ) : (
-                <img src="https://www.lyricsmotion.com/Content/images/gopal-krishna-1979-200x275.jpg" />
+                <img src="https://www.lyricsmotion.com/Content/images/gopal-krishna-1979-200x275.jpg" alt={movie.title} className="no-poster-image"/>
               )}
               <ul className="movie-description">
                 <div className="title-container">
@@ -74,13 +77,9 @@ const MovieCard = ({ movieArr, substractScript, substractTitle }) => {
                   {substractScript(movie.overview)}
                 </Paragraph>
                 <Rate
-                  value={localStorage.getItem(movie.id)}
+                className="star-rate"
+                  value={movie.value}
                   count={10}
-                  style={{
-                    fontSize: "16px",
-                    position: "absolute",
-                    bottom: "15px",
-                  }}
                   onChange={(value) => rateMovie(movie, value)}
                 />
               </ul>

@@ -9,7 +9,7 @@ function MovieContainer({ substractScript, substractTitle, rateMovie }) {
   const { movieData } = useContext(DataContext);
 
   return (
-    <Row className="movie-list" justify="start">
+    <Row className="movie-list" >
       <MovieCard
         movieArr={movieData}
         substractScript={substractScript}
