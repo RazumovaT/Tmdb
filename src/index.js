@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useContext } from "react";
 import { createRoot } from "react-dom/client";
 import { Tabs } from "antd";
@@ -17,7 +17,35 @@ const root1 = createRoot(root);
 const BASIC_URL = "https://api.themoviedb.org/3/";
 
 export function App() {
-  const { showAlert } = useContext(DataContext);
+  const { showAlert, genres } = useContext(DataContext);
+
+  const [ratedMovies, setRatedMovies] = useState(
+    localStorage.getItem("ratedMovies")
+      ? JSON.parse(localStorage.getItem("ratedMovies"))
+      : []
+  );
+
+  useEffect(() => {
+    const data = localStorage.getItem("ratedMovies");
+    if (data) setRatedMovies(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("ratedMovies", JSON.stringify(ratedMovies));
+  }, [ratedMovies]);
+
+  const addToRated = (movie, value) => {
+    if (ratedMovies) {
+      const check = ratedMovies.every((item) => item.id !== movie.id);
+
+      if (check) {
+        const update = [...ratedMovies];
+        setRatedMovies([...update, movie]);
+      } else return;
+
+      localStorage.setItem(JSON.stringify(movie.id), JSON.stringify(value));
+    }
+  };
 
   const substractScript = (text) => {
     if (text.length > 170) {
@@ -49,6 +77,7 @@ export function App() {
         <TabSearch
           substractScript={substractScript}
           substractTitle={substractTitle}
+          addToRated={addToRated}
         />
       ),
     },
@@ -59,6 +88,9 @@ export function App() {
         <TabRated
           substractScript={substractScript}
           substractTitle={substractTitle}
+          genres={genres}
+          addToRated={addToRated}
+          ratedMovies={ratedMovies}
         />
       ),
     },

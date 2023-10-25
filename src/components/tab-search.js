@@ -6,7 +6,7 @@ import { GenreList } from "./genre-list";
 import { Pagination } from "antd";
 import { DataContext } from "./api-service";
 
-const TabSearch = ({ substractScript, substractTitle }) => {
+const TabSearch = ({ substractScript, substractTitle, addToRated }) => {
   const { movieAlert, pages, setPages, movieData, totalPages } =
     useContext(DataContext);
   return (
@@ -17,6 +17,7 @@ const TabSearch = ({ substractScript, substractTitle }) => {
       <MovieContainer
         substractScript={substractScript}
         substractTitle={substractTitle}
+        addToRated={addToRated}
       />
       {movieData.length ? (
         <Pagination

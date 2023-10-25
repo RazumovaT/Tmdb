@@ -5,7 +5,7 @@ import { Row } from "antd";
 
 import { DataContext } from "./api-service";
 
-function MovieContainer({ substractScript, substractTitle, rateMovie }) {
+function MovieContainer({ substractScript, substractTitle, addToRated }) {
   const { movieData } = useContext(DataContext);
 
   return (
@@ -14,7 +14,7 @@ function MovieContainer({ substractScript, substractTitle, rateMovie }) {
         movieArr={movieData}
         substractScript={substractScript}
         substractTitle={substractTitle}
-        rateMovie={rateMovie}
+        addToRated={addToRated}
       />
     </Row>
   );

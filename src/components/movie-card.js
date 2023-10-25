@@ -7,7 +7,7 @@ import { DataContext } from "./api-service";
 
 const { Paragraph, Text } = Typography;
 
-const MovieCard = ({ movieArr, substractScript, substractTitle }) => {
+const MovieCard = ({ movieArr, substractScript, substractTitle, addToRated }) => {
   const gridStyle = {
     width: "450px",
     textAlign: "start",
@@ -15,7 +15,7 @@ const MovieCard = ({ movieArr, substractScript, substractTitle }) => {
     margin: "10px",
     span: "12",
   };
-  const { genres, rateMovie, loading } = useContext(DataContext);
+  const { genres, loading } = useContext(DataContext);
 
   return (
     <>
@@ -78,9 +78,9 @@ const MovieCard = ({ movieArr, substractScript, substractTitle }) => {
                 </Paragraph>
                 <Rate
                 className="star-rate"
-                  value={movie.value}
+                  value={localStorage.getItem(movie.id)}
                   count={10}
-                  onChange={(value) => rateMovie(movie, value)}
+                  onChange={(value) => addToRated(movie, value)}
                 />
               </ul>
             </Col>
