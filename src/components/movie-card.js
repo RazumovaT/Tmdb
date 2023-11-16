@@ -45,11 +45,13 @@ const MovieCard = ({ movieArr, substractScript, substractTitle, addToRated }) =>
               )}
               <ul className="movie-description">
                 <div className="title-container">
+                 {movie.title ?
                   <Text className="movie-name">
                     {substractTitle(movie.title)}
-                  </Text>
-                  <div
-                    className={
+                  </Text> 
+                  : ""}
+                 {movie.vote_average ? 
+                 <div className={
                       movie.vote_average < 3
                         ? "movie-bad"
                         : movie.vote_average < 5
@@ -60,22 +62,29 @@ const MovieCard = ({ movieArr, substractScript, substractTitle, addToRated }) =>
                     }
                   >
                     {movie.vote_average.toFixed(1)}
-                  </div>
+                  </div> 
+                  : ""}
                 </div>
-
-                <Text type="secondary" className="movie-data">
+              {movie.release_date ?  
+               <Text type="secondary" className="movie-data">
                   {format(new Date(movie.release_date), "MMMM dd, yyyy")}
-                </Text>
+                </Text> 
+                : ""}
                 <div className="genre-list">
-                  {movie.genre_ids.map((id) => (
+                  {movie.genre_ids ? 
+                  movie.genre_ids.map((id) => (
                     <Text keyboard className="movie-genre" key={Math.random()}>
                       {genres.find((genre) => genre.id === id).name}
                     </Text>
-                  ))}
+                  )) 
+                  : ""}
                 </div>
+                {
+                  movie.overview ?
                 <Paragraph className="movie-script">
                   {substractScript(movie.overview)}
                 </Paragraph>
+               : "" }
                 <Rate
                 className="star-rate"
                   value={localStorage.getItem(movie.id)}

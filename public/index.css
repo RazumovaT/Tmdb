@@ -34,7 +34,7 @@ body {
   flex-direction: column;
   padding-left: 20px;
   list-style: none;
-  overflow: hidden;
+  overflow: auto;
 }
 @media screen and (max-width: 939px) {
   .movie-description {
